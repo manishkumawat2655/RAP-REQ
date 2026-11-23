@@ -197,15 +197,4 @@ npm test
 See **[TESTING.md](TESTING.md)** for step-by-step manual tests of every feature
 (each strategy, rate limiting, health checks, 502/503 handling and the dashboard).
 
-## Design notes
 
-- **Why C++ for decisions?** Selection and rate limiting run on every request, so they
-  are kept in a small, fast, well-tested native core. Node.js stays focused on async I/O.
-- **Why SSE instead of WebSockets?** Data only flows server → browser, SSE works over plain
-  HTTP, and the browser reconnects automatically. No extra library is needed.
-- **Why stream (pipe) bodies?** The proxy never buffers a whole request or response in
-  memory, so large uploads/downloads work with constant memory.
-- **Limitation:** the dashboard control API has no login, so it is meant for local
-  use only. Do not expose port 9090 to the internet.
-- **Limitation:** the proxy trusts `X-Forwarded-For` so the traffic generator can simulate
-  many clients. A real internet-facing proxy should only trust it from known sources.
