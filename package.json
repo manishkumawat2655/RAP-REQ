@@ -1,0 +1,28 @@
+{
+  "name": "rap-proxy",
+  "version": "1.0.0",
+  "description": "CLI HTTP reverse proxy and load balancer with a C++ decision engine and a live dashboard",
+  "main": "src/proxy.js",
+  "bin": {
+    "rprox": "src/cli.js"
+  },
+  "scripts": {
+    "build": "node-gyp rebuild",
+    "install": "node-gyp rebuild",
+    "start": "node src/cli.js start",
+    "demo": "node src/cli.js demo",
+    "test": "node --test test/"
+  },
+  "keywords": ["reverse-proxy", "load-balancer", "n-api", "cpp", "nodejs"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "node-addon-api": "^8.2.1"
+  },
+  "devDependencies": {
+    "node-gyp": "^10.2.0"
+  }
+}

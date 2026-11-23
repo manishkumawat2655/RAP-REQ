@@ -1,0 +1,15 @@
+# Dependencies and build output (rebuilt by "npm install")
+node_modules/
+build/
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# Local editor / tool settings
+.vscode/
+.idea/
+
+# Personal notes (not published)
+docs/

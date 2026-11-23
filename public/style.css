@@ -1,0 +1,73 @@
+/* style.css: dark theme for the Rap-Proxy dashboard. */
+
+:root {
+  --bg: #0f1419; --panel: #161c23; --line: #232b35; --text: #e6e6e6; --muted: #9aa4b2;
+  --blue: #58a6ff; --green: #3fb950; --yellow: #d29922; --red: #e5534b;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); }
+
+/* ---------- header ---------- */
+header { padding: 14px 24px; background: var(--panel); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+h1 { font-size: 20px; margin: 0 12px 0 0; }
+.pill { background: var(--line); padding: 6px 12px; border-radius: 16px; font-size: 13px; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--red); margin-right: 6px; }
+.dot.on { background: var(--green); }
+
+/* ---------- layout ---------- */
+main { padding: 20px 24px; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 20px; }
+@media (max-width: 900px) { main { grid-template-columns: 1fr; padding: 16px; } }
+section { margin-bottom: 24px; }
+h2 { font-size: 15px; color: var(--muted); margin: 0 0 10px; }
+.hint { font-size: 12px; color: var(--muted); margin: -4px 0 10px; }
+
+/* ---------- backend cards ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.card { background: var(--panel); border: 2px solid var(--line); border-radius: 10px; padding: 12px; transition: border-color 0.3s; }
+.card.down { border-color: var(--red); }
+.card.flash { border-color: var(--blue); }
+.card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.url { font-weight: 600; font-size: 14px; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 8px; background: var(--green); color: #000; }
+.down .badge { background: var(--red); }
+.row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin: 4px 0; color: var(--muted); }
+.row b { color: var(--text); }
+.bar { height: 8px; background: var(--line); border-radius: 4px; margin: 8px 0; overflow: hidden; }
+.bar div { height: 100%; background: var(--blue); transition: width 0.4s; }
+.actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.stopped { color: var(--red); font-size: 12px; }
+
+/* ---------- forms and buttons ---------- */
+.panels { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.panel { background: var(--panel); border-radius: 10px; padding: 12px; }
+.panel h3 { font-size: 14px; margin: 0 0 8px; }
+label { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin: 6px 0; }
+input, select { background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 5px 7px; width: 130px; font: inherit; }
+input[type="checkbox"] { width: auto; }
+.weight { width: 54px; padding: 2px 5px; }
+button { background: var(--line); color: var(--text); border: 1px solid #2f3a46; border-radius: 6px; padding: 6px 10px; cursor: pointer; font: inherit; font-size: 13px; }
+button:hover { border-color: var(--blue); }
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+button.primary { background: #1f6feb; border-color: #1f6feb; }
+button.danger { color: var(--red); }
+button.small { padding: 3px 8px; font-size: 12px; }
+.buttons { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+
+/* ---------- test lab ---------- */
+.scenarios { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+.scenarios button { text-align: left; padding: 10px; }
+.scenarios small { display: block; color: var(--muted); margin-top: 3px; }
+#output { background: var(--panel); border-radius: 10px; padding: 12px; margin-top: 12px; min-height: 80px; max-height: 420px; overflow-y: auto; font-size: 13px; }
+#output .title { font-weight: 600; color: var(--blue); margin-top: 6px; }
+#output .step { color: var(--muted); margin: 3px 0; }
+#output .pass { color: var(--green); }
+#output .fail { color: var(--red); }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0; }
+.chip { font-family: monospace; font-size: 12px; padding: 3px 7px; border-radius: 6px; color: #000; }
+
+/* ---------- live feed ---------- */
+#feed { background: var(--panel); border-radius: 10px; padding: 8px; height: 640px; overflow-y: auto; font-family: monospace; font-size: 12px; }
+.line { padding: 3px 6px; border-bottom: 1px solid #1d242c; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ok { color: var(--green); } .warn { color: var(--yellow); } .err { color: var(--red); }
+#toast { position: fixed; right: 16px; bottom: 16px; background: var(--panel); border: 1px solid var(--line); padding: 10px 14px; border-radius: 8px; display: none; max-width: 90vw; }
+#toast.error { border-color: var(--red); color: var(--red); }
